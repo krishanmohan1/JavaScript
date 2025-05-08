@@ -30,7 +30,7 @@ map1.set("c",3);
 
 // console.log(map1)
 for (const map of map1) {
-    // console.log(map);
+    console.log(map);
 }
 
 

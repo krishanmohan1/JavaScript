@@ -7,7 +7,7 @@ const newNum = myNumbers.map( (num)=>{
     return  num + 10
 })
 
-console.log(myNumbers);
+console.log(newNum);
 
 
 // chaining --> multiple array method ek sath 
