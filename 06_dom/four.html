@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM | chai aur code </title>
+</head>
+<body style="background-color: #212121; color: #fff;">
+    
+    <ul class="language">
+        <li>javascript</li>
+    </ul>
+
+</body>
+<script>
+
+    function addLanguage(language){
+
+        const li = document.createElement('li')
+        li.innerHTML = `${language}`
+        document.querySelector('.language').appendChild(li)
+        // this , innerHTML ke karan poora tree traverse karna padta hai 
+    }
+    addLanguage("python")
+    addLanguage("typescript")
+
+    function addOptiLanguage(language){
+        const li = document.createElement('li')
+        li.appendChild(document.createTextNode(language))
+        document.querySelector('.language').appendChild(li)
+        
+    }
+    addOptiLanguage('golang')
+    // this is more optimized way , use this way in company and big project
+
+
+    // Edit 
+    const secondlang = document.querySelector('li:nth-child(2)')
+    console.log(secondlang);
+    // secondlang.innerHTML= "Mojo"     this works but this is not optimized approach , this you traver whole tree 
+
+    const newLi = document.createElement('li')
+    newLi.textContent = 'mojo'
+    secondlang.replaceWith(newLi)
+    // yaha element ka refrence tha to usko replace karna bahut aashan ho gya 
+
+
+    // edit 
+    const firstLang = document.querySelector('li:first-child')
+    firstLang.outerHTML = '<li>TypeScript</li>'
+
+    // remove any element 
+    const lastLang = document.querySelector('li:last-child')
+    lastLang.remove();
+    
+
+
+
+
+
+
+</script>
+
+
+</html>

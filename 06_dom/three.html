@@ -1,17 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
-    
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Chai aur code</title>
-</head>
+  </head>
 
-<body style="background-color: #212121; color: #fff" >
-    
-</body>
+  <body style="background-color: #212121; color: #fff"></body>
 
-<script>
+  <script>
+    const div = document.createElement("div");
+    console.log(div);
 
-</script>
+    // jaise har element khud me ek nodelist hota hai usme bhaut attribute/ property default me set hota hai , uske value hum assign kar sakte hai direct ,
+    // baki ja hum khud se bhi attribute set kar sakte hai
+
+    div.className = "main";
+    div.id = Math.round(Math.random() * 10 + 1);
+
+    // ye upper ke do attribute by default banaye hue hote hai , but khud se banana ho tab
+
+    div.setAttribute("title", "generated title");
+    div.style.backgroundColor = "green";
+    div.style.padding = "12px";
+
+    // innerText ya innerHTML ko div me set karne ke do tarke
+    //1. div.innerText = 'hello baba'
+    // esme kya hota hai , ki ye overwrite karta hai pahle se attribute bana hua hai usme
+
+    // 2. ki ek text node bana ke div me append kar do
+
+    // div.innerText = 'Chai aur Code'
+
+    const addText = document.createTextNode("Chai aur Code");
+    div.appendChild(addText);
+
+    document.body.appendChild(div);
+     
+  </script>
 </html>
