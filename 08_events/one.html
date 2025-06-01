@@ -1,56 +1,136 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>htnml Events </title>
-</head>
-<body style="background-color: #414141; color: aliceblue;">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>htnml Events</title>
+  </head>
+  <body style="background-color: #414141; color: aliceblue">
     <h2>Amazing image</h2>
-    <div >
-        <ul id="images">
-            <li><img width="200px" id="photoshop" src="https://images.pexels.com/photos/3561339/pexels-photo-3561339.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt="photoshop"></li>
-            <li><img width="200px" id="japan" src="https://images.pexels.com/photos/3532553/pexels-photo-3532553.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
-            <li><img width="200px" id="river" src="https://images.pexels.com/photos/3532551/pexels-photo-3532551.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
-            <li><img width="200px" id="owl"   src="https://images.pexels.com/photos/3532552/pexels-photo-3532552.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt="" ></li>
-            <!-- onclick="alert('owl')"    aise html me he event add karna is not good practice , esse jab scale karte hai to dikkat aati hai  --> 
+    <div>
+      <ul id="images">
+        <li>
+          <img
+            width="200px"
+            id="photoshop"
+            src="https://images.pexels.com/photos/3561339/pexels-photo-3561339.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load"
+            alt="photoshop"
+          />
+        </li>
+        <li>
+          <img
+            width="200px"
+            id="japan"
+            src="https://images.pexels.com/photos/3532553/pexels-photo-3532553.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load"
+            alt=""
+          />
+        </li>
+        <li>
+          <img
+            width="200px"
+            id="river"
+            src="https://images.pexels.com/photos/3532551/pexels-photo-3532551.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load"
+            alt=""
+          />
+        </li>
+        <li>
+          <img
+            width="200px"
+            id="owl"
+            src="https://images.pexels.com/photos/3532552/pexels-photo-3532552.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load"
+            alt=""
+          />
+        </li>
+        <!-- onclick="alert('owl')"    aise html me he event add karna is not good practice , esse jab scale karte hai to dikkat aati hai  -->
 
-            <li><img width="200px" id="prayer" src="https://images.pexels.com/photos/2522671/pexels-photo-2522671.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
-            <li><a style="color: aliceblue;" href="https://google.com" id="google">Google</a></li>
-        </ul>
-   </div>
-</body>
+        <li>
+          <img
+            width="200px"
+            id="prayer"
+            src="https://images.pexels.com/photos/2522671/pexels-photo-2522671.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load"
+            alt=""
+          />
+        </li>
+        <li>
+          <a style="color: aliceblue" href="https://google.com" id="google"
+            >Google</a
+          >
+        </li>
+      </ul>
+    </div>
+  </body>
 
-<script>
-
-    // ye tarika me propagation ka dikkat aata hai , so ye bhi not good practice 
+  <script>
+    // ye tarika me propagation ka dikkat aata hai , so ye bhi not good practice
 
     // document.getElementById('owl').onclick = function(){
     //     alert('owl')
     // }
 
-
     // addEventListner me third parameter by default false hote hai
     // this is good practice and this is very powerful for event
-    
-    // attachEvent()    jab internet Explorer tha tab use me hota tha 
-    // JQuery -- on ka use hota tha 
 
+    // attachEvent()    jab internet Explorer tha tab use me hota tha
+    // JQuery -- on ka use hota tha
 
-    // Evenet Instance property
+    // Event Instance property
     // type , timestamp, defaultprevented
     // target, toElement , srcElement, currentTarget
     // clientX, clientY, screenx, screenY
     // altKey, ctrlkey, shiftkey, keyCode
 
+    // document.getElementById("images").addEventListener(
+    //   "click",
+    //   function (e) {
+    //     console.log("ul Clicked ");
+    //   },
+    //   false
+    // );
 
-    
-    document.getElementById('owl').addEventListener('click', function(e){
-        console.log(e);
+    // document.getElementById("owl").addEventListener(
+    //   "click",
+    //   function (e) {
+    //     console.log("owl clicked ");
+    //     // to  stop event propagation
+    //     e.stopPropagation();
+    //   },
+    //   false
+    // );
+
+    // default false --> event bubling , true --> event capturing
+    // Above is event Propagation --> Event bubling (inside to outside ), Event capturing (outside to inside)
+
+
+    // document.getElementById('google').addEventListener('click', function(e){
+    //     console.log('google link is clicked ')
+    //     e.preventDefault();     // esse link open hoga , ye form submit me bhi use karte hai , 
+    //     e.stopPropagation();    // ye event propagation ko rokta hai 
+    // },false)
+
+
+    // Basic Project About like , image after clicked on it 
+
+    document.getElementById('images').addEventListener('click', function(e){
         
+        // console.log(e.target.parentNode)
+        // let removeIt = e.target.parentNode      // esme agar li pe click kiye to uska parent ul hai to poora ul he remove ho jayega 
+        // removeIt.remove()
+        // removeIt.parentNode.removeChild(removeIt)    ye tarika bhi hai uske parent pe jake aur eske child ko remove karna 
+
+        document.getElementById('images').addEventListener('click', function(e){
+            console.log(e.target.tagName);
+            
+            if(e.target.tagName === 'IMG'){
+                console.log(e.target.id)
+                let removeIt = e.target.parentNode;
+                removeIt.remove()
+            }
+        },false)
+
+
     }, false)
-    
 
-</script>
 
+
+  </script>
 </html>

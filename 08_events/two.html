@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Cahi aur code</h1>
+    <button id="stop" >Stop</button>
+
+    <script>
+        const sayHitesh = function(){
+            console.log('hitesh');
+        }
+
+        const changetext  = function(){
+        document.querySelector('h1').innerHTML = 'best JS Series'
+        }
+
+        const changeMe = setTimeout(changetext, 2000)
+        // setTimeout ek handler leta hai jisko callback function bolte hai , aur timme in miliseconds
+
+
+        document.querySelector('#stop').addEventListener('click', function(){
+            clearTimeout(changeMe)
+            // ye clearTimeout() setTimeout ko stop karta hai 
+        })
+
+
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body style="background-color: #212121; color: white;">
+    
+    <!-- Value	State	Description
+0	UNSENT	Client has been created. open() not called yet.
+1	OPENED	open() has been called.
+2	HEADERS_RECEIVED	send() has been called, and headers and status are available.
+3	LOADING	Downloading; responseText holds partial data.
+4	DONE	The operation is complete. -->
+
+<div id="profile">
+
+</div>
+
+</body>
+
+<script>
+    // before fetch(), XMLHttpReques() were used , it is related AJAX
+    // XML request ko he AJAX request bolte hai , ye jada kama me nhi aata hai , but legacy code me aata hai pahle se jo code bana hua hai
+
+    // open()  he request bhejta hai , ye do parameter leta hai , 
+    // ek http request method , and ek string basically url 
+    
+    const xhr = new XMLHttpRequest()    // ye object banaye hai .
+    const requestURL =  'https://api.github.com/users/krishanmohan1'
+
+    xhr.open('GET', requestURL);
+    xhr.onreadystatechange = function(){
+        console.log(xhr.readyState);    // ye readystate ko continuously change jo ho rha hai usko dikhata hai 
+        if(xhr.readyState === 4){
+            // url se jab se request aata hai to max time wo string me aata hai , so usko JSON object bananne ke 
+            const data = JSON.parse(this.responseText)
+            console.log(typeof data)
+            console.log(data)
+            console.log(data.followers)
+            
+
+            // document.getElementById('project').innerHTML= data.name
+
+            // Create Card 
+            const card = document.createElement('div')
+            card.style.width = '300px'
+            card.style.padding = '20px'
+            card.style.border = '1px solid #555'
+            card.style.borderRadius = '10px'
+            card.style.backgroundColor = '#333'
+            card.style.textAlign = 'center'
+            card.style.marginTop = '20px'
+
+
+            // Profile image
+            const avatar = document.createElement('img')
+            avatar.src =data.avatar_url
+            avatar.alt = `${data.name}'s profile picture`
+            avatar.style.width = '100px'
+            avatar.style.height = '100px'
+            avatar.style.borderRadius = '50%'
+
+            // name 
+            const name = document.createElement('h2')
+            name.innerText = data.name;
+
+            // user name 
+
+            const followers = document.createElement('p')
+            username.innerText = `Followers : ${data.followers}`
+          
+            const username = document.createElement('p');
+            username.innerText = `@${data.login}`;
+
+
+            // append to card
+
+            card.appendChild(avatar)
+            card.appendChild(name)
+            card.appendChild(username)
+            card.appendChild(followers)
+
+            // append card to the div #profile
+
+            document.getElementById('profile').appendChild(card)
+        }
+    }
+
+    xhr.send()
+
+
+
+
+</script>
+</html>
