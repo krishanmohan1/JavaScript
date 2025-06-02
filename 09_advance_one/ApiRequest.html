@@ -21,8 +21,8 @@
 </body>
 
 <script>
-    // before fetch(), XMLHttpReques() were used , it is related AJAX
-    // XML request ko he AJAX request bolte hai , ye jada kama me nhi aata hai , but legacy code me aata hai pahle se jo code bana hua hai
+    // before fetch(), XMLHttpRequest() were used , it is related AJAX
+    // XML request ko he AJAX request bolte hai , ye jada kama me nhi aata hai now , but legacy code me aata hai pahle se jo code bana hua hai
 
     // open()  he request bhejta hai , ye do parameter leta hai , 
     // ek http request method , and ek string basically url 
@@ -60,7 +60,7 @@
             avatar.alt = `${data.name}'s profile picture`
             avatar.style.width = '100px'
             avatar.style.height = '100px'
-            avatar.style.borderRadius = '50%'
+            avatar.style.borderRadius = '20%'
 
             // name 
             const name = document.createElement('h2')
@@ -69,7 +69,7 @@
             // user name 
 
             const followers = document.createElement('p')
-            username.innerText = `Followers : ${data.followers}`
+            followers.innerText = `Followers : ${data.followers}`
           
             const username = document.createElement('p');
             username.innerText = `@${data.login}`;
