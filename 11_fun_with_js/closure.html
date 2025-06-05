@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Closure and chai</title>
+</head>
+<body style="background-color: #313131;">
+    <button id="orange">orange</button>
+    <button id="green">green</button>
+</body>
+
+<!-- <script>
+    // function init() {
+//   var name = "Mozilla";
+//   function displayName() {
+//     console.log(name);
+//   }
+//   displayName();
+// }
+// init();
+
+/*
+
+init() creates a local variable called name and a function called displayName(). The displayName() function is an inner function that is defined inside init() and is available only within the body of the init() function. Note that the displayName() function has no local variables of its own. However, since inner functions have access to the variables of outer scopes, displayName() can access the variable name declared in the parent function, init()
+
+*/
+
+function outer() {
+  let username = "hitesh";
+//   console.log("OUTER", secret);     // not available in its score
+
+  function inner() {
+    let secret = "my123";
+    console.log("inner", username);
+  }
+
+  function innerTwo() {
+    console.log("ineerTwo", username);
+    // console.log(secret);     // here is also no access to to secret because it is in another scope
+  }
+
+  inner();
+  innerTwo();
+}
+outer();
+
+// this is how lexical scoppiing work
+
+
+
+
+function makeFunc() {
+  const name = "Mozilla";
+  function displayName() {
+    console.log(name);
+  }
+  return displayName;       // jab koi fuunction return karte hai to sirf function nhi return hota hai , uska poora lexical scope return hota hai ,jaise yaha par , 
+}
+
+const myFunc = makeFunc();
+myFunc();
+
+
+</script> -->
+
+<script>
+
+  // document.getElementById('orange').onclick = function(){
+  //   document.body.style.backgroundColor = `orange`
+  // }
+
+  // document.getElementById('green').onclick = function(){
+  //   document.body.style.backgroundColor = `green`
+  // }
+
+  // what if i have 100 button and color in array , will i write the above code 100 times
+  // no , i cant repeat the code .
+
+  // so here the use of closure comes into picture
+
+  function clickHandler(color){
+        // document.body.style.backgroundColor = `${color}`
+        return function(){
+          document.body.style.backgroundColor = `${color}`
+        }
+
+        // yaha aata hai ye function jo return kar rha hai ye color return kar rha hai execute hone ke baad 
+        // aur ye lexical scope return kar rha hai  ,issiliye .
+  }
+
+  document.getElementById('orange').onclick = clickHandler('orange')
+  document.getElementById('green').onclick = clickHandler('green')
+  // onclick ek function chahiye yaha aise me refernce de rahe hai jo direct execute ho ja rha hai
+
+  // ye example lexical scope aur closure ka hai interview me aap use kar sakte hai
+
+</script>
+</html>
